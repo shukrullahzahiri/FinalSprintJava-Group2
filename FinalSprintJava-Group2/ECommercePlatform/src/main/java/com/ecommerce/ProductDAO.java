@@ -1,13 +1,13 @@
-package main.java.com.ecommerce;
+package com.ecommerce;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO {
-    private final String url = "jdbc:postgresql://localhost:5432/ecommerce";
+    private final String url = "jdbc:postgresql://localhost:5432/postgres";
     private final String user = "postgres";
-    private final String password = "Kabul@123";
+    private final String password = "Keyin2021";
 
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(url, user, password);
@@ -22,6 +22,19 @@ public class ProductDAO {
             pstmt.setInt(3, product.getQuantity());
             pstmt.setInt(4, product.getSellerId());
             pstmt.executeUpdate();
+        }
+    }
+
+    public void updateProduct(Product product) throws SQLException {
+        String query = "UPDATE products SET name = ?, price = ?, quantity = ? WHERE id = ? AND seller_id = ?";
+        try (Connection connection = connect();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, product.getName());
+            statement.setDouble(2, product.getPrice());
+            statement.setInt(3, product.getQuantity());
+            statement.setInt(4, product.getId());
+            statement.setInt(5, product.getSellerId());
+            statement.executeUpdate();
         }
     }
 

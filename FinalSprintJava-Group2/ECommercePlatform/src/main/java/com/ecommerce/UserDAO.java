@@ -1,13 +1,13 @@
-package main.java.com.ecommerce;
+package com.ecommerce;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    private final String url = "jdbc:postgresql://localhost:5432/ecommerce";
+    private final String url = "jdbc:postgresql://localhost:5432/postgres";
     private final String user = "postgres";
-    private final String password = "Kabul@123";
+    private final String password = "Keyin2021";
 
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(url, user, password);
@@ -27,21 +27,21 @@ public class UserDAO {
 
     public User getUserByUsername(String username) throws SQLException {
         String SQL = "SELECT * FROM users WHERE username = ?";
-        User user = null;
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(SQL)) {
             pstmt.setString(1, username);
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                user = new User();
+                User user = new User();
                 user.setId(rs.getInt("id"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("email"));
                 user.setRole(rs.getString("role"));
+                return user;
             }
         }
-        return user;
+        return null;
     }
 
     public List<User> getAllUsers() throws SQLException {

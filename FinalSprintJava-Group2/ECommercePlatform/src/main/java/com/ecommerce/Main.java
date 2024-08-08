@@ -1,4 +1,4 @@
-package main.java.com.ecommerce;
+package com.ecommerce;
 
 public class Main {
     public static void main(String[] args) {
@@ -6,4 +6,3 @@ public class Main {
         menu.showMainMenu();
     }
 }
-

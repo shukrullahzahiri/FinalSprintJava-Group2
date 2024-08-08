@@ -1,4 +1,4 @@
-package main.java.com.ecommerce;
+package com.ecommerce;
 
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -19,12 +19,20 @@ public class Menu {
 
             switch (choice) {
                 case 1:
-                    authService.register();
+                    try {
+                        authService.register();
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 case 2:
-                    User user = authService.login();
-                    if (user != null) {
-                        showUserMenu(user);
+                    try {
+                        User user = authService.login();
+                        if (user != null) {
+                            showUserMenu(user);
+                        }
+                    } catch (SQLException e) {
+                        e.printStackTrace();
                     }
                     break;
                 case 3:
@@ -201,7 +209,7 @@ public class Menu {
                 product.setPrice(price);
                 product.setQuantity(quantity);
 
-                productDAO.addProduct(product);
+                productDAO.updateProduct(product);
                 System.out.println("Product updated successfully.");
             } else {
                 System.out.println("Product not found.");

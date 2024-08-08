@@ -1,0 +1,31 @@
+.
+├── ECommercePlatform
+│   ├── Lib
+│   │   ├── jbcrypt-0.4.jar
+│   │   └── postgresql-42.3.6.jar
+│   ├── Out
+│   ├── ecommerce-project.sql
+│   ├── launch.json
+│   ├── resources
+│   │   └── schema.sql
+│   └── src
+│       ├── main
+│       │   └── java
+│       │       └── com
+│       │           └── ecommerce
+│       │               ├── AuthenticationService.java
+│       │               ├── Main.java
+│       │               ├── Menu.java
+│       │               ├── Product.java
+│       │               ├── ProductDAO.java
+│       │               ├── User.java
+│       │               ├── UserDAO.java
+│       │               ├── UserRole.java
+│       │               └── UserService.java
+│       └── test
+│           └── java
+│               └── com
+│                   └── ecommerce
+└── directory_structure.txt
+
+14 directories, 15 files
