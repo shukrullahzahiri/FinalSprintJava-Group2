@@ -44,7 +44,7 @@ public class Menu {
     }
 
     private void showUserMenu(User user) {
-        switch (user.getRole()) {
+        switch (user.getRole().toLowerCase()) {
             case "buyer":
                 showBuyerMenu();
                 break;

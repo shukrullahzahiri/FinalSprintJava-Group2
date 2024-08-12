@@ -1,7 +1,10 @@
 package com.ecommerce;
 
-import org.mindrot.jbcrypt.BCrypt;
+
+
 import java.sql.SQLException;
+
+import org.mindrot.jbcrypt.BCrypt;
 
 public class UserService {
     private UserDAO userDAO = new UserDAO();

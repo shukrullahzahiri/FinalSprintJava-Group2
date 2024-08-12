@@ -1,0 +1,7 @@
+{
+  "java.project.referencedLibraries": [
+    "lib/**/*.jar",
+    "FinalSprintJava-Group2/ECommercePlatform/Lib/jbcrypt-0.4.jar",
+    "FinalSprintJava-Group2/ECommercePlatform/Lib/postgresql-42.3.6.jar"
+  ]
+}

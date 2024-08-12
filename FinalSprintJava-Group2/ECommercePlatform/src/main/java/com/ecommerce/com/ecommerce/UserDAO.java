@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class UserDAO {
-    private final String url = "jdbc:postgresql://localhost:5432/postgres";
+    private final String url = "jdbc:postgresql://localhost:5432/java";
     private final String user = "postgres";
-    private final String password = "Keyin2021";
+    private final String password = "Confidence";
 
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(url, user, password);
@@ -33,7 +33,7 @@ public class UserDAO {
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 User user = new User();
-                user.setId(rs.getInt("id"));
+                user.setId(rs.getInt("user_id"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("email"));
@@ -52,7 +52,7 @@ public class UserDAO {
              ResultSet rs = stmt.executeQuery(SQL)) {
             while (rs.next()) {
                 User user = new User();
-                user.setId(rs.getInt("id"));
+                user.setId(rs.getInt("user_id"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setEmail(rs.getString("email"));
@@ -64,7 +64,7 @@ public class UserDAO {
     }
 
     public void deleteUser(int userId) throws SQLException {
-        String SQL = "DELETE FROM users WHERE id = ?";
+        String SQL = "DELETE FROM users WHERE user_id = ?";
         try (Connection conn = connect();
              PreparedStatement pstmt = conn.prepareStatement(SQL)) {
             pstmt.setInt(1, userId);

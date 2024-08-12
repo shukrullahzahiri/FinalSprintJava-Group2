@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductDAO {
-    private final String url = "jdbc:postgresql://localhost:5432/postgres";
+    private final String url = "jdbc:postgresql://localhost:5432/java";
     private final String user = "postgres";
-    private final String password = "Keyin2021";
+    private final String password = "Confidence";
 
     public Connection connect() throws SQLException {
         return DriverManager.getConnection(url, user, password);
