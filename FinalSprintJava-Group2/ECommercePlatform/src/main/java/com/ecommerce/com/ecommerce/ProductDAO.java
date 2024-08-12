@@ -26,7 +26,7 @@ public class ProductDAO {
     }
 
     public void updateProduct(Product product) throws SQLException {
-        String query = "UPDATE products SET name = ?, price = ?, quantity = ? WHERE id = ? AND seller_id = ?";
+        String query = "UPDATE products SET name = ?, price = ?, quantity = ? WHERE user_id = ? AND seller_id = ?";
         try (Connection connection = connect();
              PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, product.getName());
@@ -47,7 +47,7 @@ public class ProductDAO {
             ResultSet rs = pstmt.executeQuery();
             while (rs.next()) {
                 Product product = new Product();
-                product.setId(rs.getInt("id"));
+                product.setId(rs.getInt("seller_id"));
                 product.setName(rs.getString("name"));
                 product.setPrice(rs.getDouble("price"));
                 product.setQuantity(rs.getInt("quantity"));
@@ -66,7 +66,7 @@ public class ProductDAO {
              ResultSet rs = stmt.executeQuery(SQL)) {
             while (rs.next()) {
                 Product product = new Product();
-                product.setId(rs.getInt("id"));
+                product.setId(rs.getInt("product_id"));
                 product.setName(rs.getString("name"));
                 product.setPrice(rs.getDouble("price"));
                 product.setQuantity(rs.getInt("quantity"));
